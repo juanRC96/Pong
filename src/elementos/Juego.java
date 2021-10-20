@@ -16,7 +16,7 @@ public class Juego extends JPanel {
 	Barra barra = new Barra(this);
 	Bola bola = new Bola(this);
 
-	//constructor
+	// constructor
 	public Juego() {
 		addKeyListener(new KeyListener() {
 			@Override
@@ -50,7 +50,7 @@ public class Juego extends JPanel {
 		bola.paint(g2d);
 	}
 
-	//main
+	// main
 	public static void main(String[] args) throws InterruptedException {
 		JFrame frame = new JFrame("Ventana");
 		Juego j = new Juego();

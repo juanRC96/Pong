@@ -7,7 +7,7 @@ public class Bola {
 
 	private static final int DIAMETRO = 50;
 
-	int x = 0;
+	int x = 100;
 	int y = 0;
 	int xa = 2;
 	int ya = 2;
@@ -19,7 +19,7 @@ public class Bola {
 
 	public void mover() {
 
-		//movimiento de la bola
+		// movimiento de la bola
 		if (x + xa < 0)
 			xa = 2;
 		if (x + xa > j.getWidth() - 50)
@@ -28,35 +28,35 @@ public class Bola {
 			ya = 2;
 		if (y + ya > j.getHeight() - 50)
 			ya = -2;
-		
-		//segun la posicion de la bola y la barra cambia la direccion del rebote
+
+		// segun la posicion de la bola y la barra cambia la direccion del rebote
 		if (collision()) {
-				
-			if(j.barra.getY() > y) {
+
+			if (j.barra.getY() > y) {
 				ya = -2;
 			}
-			if(j.barra.getY() < y) {
+			if (j.barra.getY() < y) {
 				ya = 2;
 			}
-			if(j.barra.getX() > x) {
+			if (j.barra.getX() > x) {
 				xa = -2;
 			}
-			if(j.barra.getX() < x) {
+			if (j.barra.getX() < x) {
 				xa = 2;
 			}
 		}
-		
+
 		x = x + xa;
 		y = y + ya;
-		
-		}
 
-	//dibujo de la bola
+	}
+
+	// dibujo de la bola
 	public void paint(Graphics2D g) {
 		g.fillOval(x, y, DIAMETRO, DIAMETRO);
 	}
 
-	//cuando dos figuras se pisan, devuelve un true
+	// cuando dos figuras se pisan, devuelve un true
 	private boolean collision() {
 		return j.barra.getBounds().intersects(getBounds());
 	}
