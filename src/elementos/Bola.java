@@ -29,7 +29,7 @@ public class Bola {
 		if (y + ya > j.getHeight() - 50)
 			ya = -2;
 		
-		//segun la direccion de la bola y la barra cambia la direccion del rebote
+		//segun la posicion de la bola y la barra cambia la direccion del rebote
 		if (collision()) {
 				
 			if(j.barra.getY() > y) {
