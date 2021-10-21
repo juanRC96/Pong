@@ -1,5 +1,7 @@
 package elementos;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -7,6 +9,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class Juego extends JPanel {
@@ -18,6 +21,10 @@ public class Juego extends JPanel {
 
 	// constructor
 	public Juego() {
+
+		// color de fondo del jpanel
+		this.setBackground(Color.BLACK);
+
 		addKeyListener(new KeyListener() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -36,9 +43,21 @@ public class Juego extends JPanel {
 		setFocusable(true);
 	}
 
+	//devolver puntaje
+	private int getPuntaje() {
+		return bola.getPuntaje();
+	}
+
+	//animar objetos
 	private void mover() {
 		barra.mover();
 		bola.mover();
+	}
+	
+	//alerta de juego terminado
+	public void juegoTerminado() {
+		JOptionPane.showMessageDialog(this, this.getPuntaje(), "Su puntaje", JOptionPane.OK_OPTION);
+		System.exit(ABORT);
 	}
 
 	@Override
@@ -46,8 +65,16 @@ public class Juego extends JPanel {
 		super.paint(g);
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		// barra
+		g2d.setColor(Color.GREEN);
 		barra.paint(g2d);
+		// bola
+		g2d.setColor(Color.RED);
 		bola.paint(g2d);
+		// puntuacion
+		g2d.setColor(Color.CYAN);
+		g2d.setFont(new Font("Candara", Font.ITALIC, 40));
+		g2d.drawString(String.valueOf(getPuntaje()), 10, 40);
 	}
 
 	// main
