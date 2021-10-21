@@ -60,5 +60,14 @@ public class Barra {
 	public int getX() {
 		return x;
 	}
+	
+	public int getAncho() {
+		return ANCHO;
+	}
+	
+	public int getAlto() {
+		return ALTO;
+	}
+	
 
 }

@@ -7,7 +7,7 @@ public class Bola {
 
 	private static final int DIAMETRO = 50;
 
-	int x = 100;
+	int x = 200;
 	int y = 0;
 	int xa = 2;
 	int ya = 2;
@@ -34,17 +34,17 @@ public class Bola {
 		// segun la posicion de la bola y la barra cambia la direccion del rebote
 		if (collision()) {
 
-			if (j.barra.getY() > y - DIAMETRO) {
+			if (j.barra.getY() - j.barra.getAlto() > y ) {
 				ya = -3;
 			}
-			if (j.barra.getY() < y - DIAMETRO) {
+			if (j.barra.getY() + j.barra.getAlto() < y) {
 				ya = 3;
 			}
-			if (j.barra.getX() > x - DIAMETRO) {
-				xa = -3;
-			}
-			if (j.barra.getX() < x - DIAMETRO) {
+			if (j.barra.getX() - j.barra.getAncho() > x) {
 				xa = 3;
+			}
+			if (j.barra.getX() + j.barra.getAncho() < x) {
+				xa = -3;
 			}
 			
 			puntaje = puntaje + 1;
