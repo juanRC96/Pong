@@ -9,8 +9,9 @@ public class Bola {
 
 	int x = 200;
 	int y = 0;
-	int xa = 2;
-	int ya = 2;
+	// velocidad de desplazamiento
+	int xa = 5;
+	int ya = 5;
 	int puntaje = 0;
 
 	private Juego j;
@@ -23,36 +24,33 @@ public class Bola {
 
 		// movimiento de la bola
 		if (x + xa < 0)
-			xa = 3;
+			xa = -xa;
 		if (x + xa > j.getWidth() - DIAMETRO)
-			xa = -3;
+			xa = -xa;
 		if (y + ya < 0)
-			ya = 3;
+			ya = -ya;
 		if (y + ya > j.getHeight() - DIAMETRO)
 			j.juegoTerminado();
 
-		// segun la posicion de la bola y la barra cambia la direccion del rebote
+		// calculo del rebote al colisionar
 		if (collision()) {
 
 			if (j.barra.getY() - j.barra.getAlto() > y) {
-				ya = -3;
+				ya = -ya;
 			}
 			if (j.barra.getY() + j.barra.getAlto() < y) {
-				ya = 3;
+				ya = -ya;
 			}
 			if (j.barra.getX() - j.barra.getAncho() > x) {
-				xa = 3;
+				xa = -xa;
 			}
 			if (j.barra.getX() + j.barra.getAncho() < x) {
-				xa = -3;
+				xa = -xa;
 			}
-
 			puntaje = puntaje + 1;
 		}
-
 		x = x + xa;
 		y = y + ya;
-
 	}
 
 	// devuelvo el puntaje

@@ -5,8 +5,11 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import javax.swing.Timer;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -18,9 +21,20 @@ public class Juego extends JPanel {
 
 	Barra barra = new Barra(this);
 	Bola bola = new Bola(this);
+	public Timer t;
+	int i = 0;
 
-	// constructor
+	// CONSTRUCTOR
 	public Juego() {
+		
+		//temporizador
+		t = new Timer(1000, new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				i++;	
+			}
+		});
+		t.start();
 
 		// color de fondo del jpanel
 		this.setBackground(Color.BLACK);
@@ -41,6 +55,10 @@ public class Juego extends JPanel {
 			}
 		});
 		setFocusable(true);
+	}
+	
+	private int getTiempo() {
+		return i;
 	}
 
 	// devolver puntaje
@@ -75,6 +93,10 @@ public class Juego extends JPanel {
 		g2d.setColor(Color.CYAN);
 		g2d.setFont(new Font("Candara", Font.ITALIC, 40));
 		g2d.drawString(String.valueOf(getPuntaje()), 10, 40);
+		//temporizador
+		g2d.setColor(Color.YELLOW);
+		g2d.setFont(new Font("Candara", Font.ITALIC, 40));
+		g2d.drawString(String.valueOf(getTiempo()), 340, 40);
 	}
 
 	// main
