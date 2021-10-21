@@ -34,16 +34,16 @@ public class Bola {
 		// segun la posicion de la bola y la barra cambia la direccion del rebote
 		if (collision()) {
 
-			if (j.barra.getY() > y) {
+			if (j.barra.getY() > y - DIAMETRO) {
 				ya = -3;
 			}
-			if (j.barra.getY() < y) {
+			if (j.barra.getY() < y - DIAMETRO) {
 				ya = 3;
 			}
-			if (j.barra.getX() > x) {
+			if (j.barra.getX() > x - DIAMETRO) {
 				xa = -3;
 			}
-			if (j.barra.getX() < x) {
+			if (j.barra.getX() < x * DIAMETRO) {
 				xa = 3;
 			}
 			
