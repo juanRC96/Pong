@@ -5,9 +5,9 @@ import java.awt.Rectangle;
 
 public class Bola {
 
-	private static final int DIAMETRO = 50;
+	private static final int DIAMETRO = 30;
 
-	int x = 200;
+	int x = 300;
 	int y = 0;
 	// velocidad de desplazamiento
 	int xa = 5;
