@@ -12,7 +12,7 @@ public class Bola {
 	int xa = 2;
 	int ya = 2;
 	int puntaje = 0;
-	
+
 	private Juego j;
 
 	public Bola(Juego j) {
@@ -34,7 +34,7 @@ public class Bola {
 		// segun la posicion de la bola y la barra cambia la direccion del rebote
 		if (collision()) {
 
-			if (j.barra.getY() - j.barra.getAlto() > y ) {
+			if (j.barra.getY() - j.barra.getAlto() > y) {
 				ya = -3;
 			}
 			if (j.barra.getY() + j.barra.getAlto() < y) {
@@ -46,7 +46,7 @@ public class Bola {
 			if (j.barra.getX() + j.barra.getAncho() < x) {
 				xa = -3;
 			}
-			
+
 			puntaje = puntaje + 1;
 		}
 
@@ -54,8 +54,8 @@ public class Bola {
 		y = y + ya;
 
 	}
-	
-	//devuelvo el puntaje
+
+	// devuelvo el puntaje
 	public int getPuntaje() {
 		return puntaje;
 	}
@@ -70,7 +70,7 @@ public class Bola {
 		return j.barra.getBounds().intersects(getBounds());
 	}
 
-	//dibujo de la hitbox de la bola
+	// dibujo de la hitbox de la bola
 	public Rectangle getBounds() {
 		return new Rectangle(x, y, DIAMETRO, DIAMETRO);
 	}

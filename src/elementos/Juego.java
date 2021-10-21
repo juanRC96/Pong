@@ -43,18 +43,18 @@ public class Juego extends JPanel {
 		setFocusable(true);
 	}
 
-	//devolver puntaje
+	// devolver puntaje
 	private int getPuntaje() {
 		return bola.getPuntaje();
 	}
 
-	//animar objetos
+	// animar objetos
 	private void mover() {
 		barra.mover();
 		bola.mover();
 	}
-	
-	//alerta de juego terminado
+
+	// alerta de juego terminado
 	public void juegoTerminado() {
 		JOptionPane.showMessageDialog(this, this.getPuntaje(), "Su puntaje", JOptionPane.OK_OPTION);
 		System.exit(ABORT);

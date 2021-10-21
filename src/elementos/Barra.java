@@ -5,10 +5,10 @@ import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 
 public class Barra {
-	
+
 	private static final int ANCHO = 100;
 	private static final int ALTO = 20;
-	
+
 	int x = 0;
 	int y = 400;
 	int xa = 0;
@@ -19,7 +19,7 @@ public class Barra {
 		this.j = j;
 	}
 
-	//movimiento de la barra, limitado al ancho y alto
+	// movimiento de la barra, limitado al ancho y alto
 	public void mover() {
 		if (x + xa > 0 && x + xa < j.getWidth() - ANCHO)
 			x = x + xa;
@@ -27,13 +27,13 @@ public class Barra {
 			y = y + ya;
 	}
 
-	//accion al soltar tecla
+	// accion al soltar tecla
 	public void keyReleased(KeyEvent e) {
 		xa = 0;
 		ya = 0;
 	}
 
-	//accion al presionar tecla
+	// accion al presionar tecla
 	public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_LEFT)
 			xa = -5;
@@ -41,33 +41,32 @@ public class Barra {
 			xa = 5;
 	}
 
-	//dibujar barra
+	// dibujar barra
 	public void paint(Graphics2D g) {
 		g.fillRect(x, y, ANCHO, ALTO);
 	}
-	
-	//dibujo de la hitbox de la barra
+
+	// dibujo de la hitbox de la barra
 	public Rectangle getBounds() {
 		return new Rectangle(x, y, ANCHO, ALTO);
 	}
-	
-	//devolver coordenada y
+
+	// devolver coordenada y
 	public int getY() {
 		return y;
 	}
-	
-	//devolver coordenada x
+
+	// devolver coordenada x
 	public int getX() {
 		return x;
 	}
-	
+
 	public int getAncho() {
 		return ANCHO;
 	}
-	
+
 	public int getAlto() {
 		return ALTO;
 	}
-	
 
 }
