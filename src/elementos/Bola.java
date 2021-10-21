@@ -24,11 +24,11 @@ public class Bola {
 		// movimiento de la bola
 		if (x + xa < 0)
 			xa = 3;
-		if (x + xa > j.getWidth() - 50)
+		if (x + xa > j.getWidth() - DIAMETRO)
 			xa = -3;
 		if (y + ya < 0)
 			ya = 3;
-		if (y + ya > j.getHeight() - 50)
+		if (y + ya > j.getHeight() - DIAMETRO)
 			j.juegoTerminado();
 
 		// segun la posicion de la bola y la barra cambia la direccion del rebote
@@ -43,7 +43,7 @@ public class Bola {
 			if (j.barra.getX() > x - DIAMETRO) {
 				xa = -3;
 			}
-			if (j.barra.getX() < x * DIAMETRO) {
+			if (j.barra.getX() < x - DIAMETRO) {
 				xa = 3;
 			}
 			
