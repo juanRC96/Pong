@@ -23,8 +23,6 @@ public class Barra {
 	public void mover() {
 		if (x + xa > 0 && x + xa < j.getWidth() - ANCHO)
 			x = x + xa;
-		if (y + ya > 0 && y + ya < j.getHeight() - ALTO)
-			y = y + ya;
 	}
 
 	// accion al soltar tecla
