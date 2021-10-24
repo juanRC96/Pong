@@ -1,5 +1,6 @@
 package elementos;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
@@ -41,6 +42,7 @@ public class Barra {
 
 	// dibujar barra
 	public void paint(Graphics2D g) {
+		g.setColor(Color.GREEN);
 		g.fillRect(x, y, ANCHO, ALTO);
 	}
 

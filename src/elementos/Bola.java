@@ -1,5 +1,6 @@
 package elementos;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
@@ -60,6 +61,7 @@ public class Bola {
 
 	// dibujo de la bola
 	public void paint(Graphics2D g) {
+		g.setColor(Color.RED);
 		g.fillOval(x, y, DIAMETRO, DIAMETRO);
 	}
 

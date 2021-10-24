@@ -26,18 +26,15 @@ public class Juego extends JPanel {
 
 	// CONSTRUCTOR
 	public Juego() {
-		
-		//temporizador
-		t = new Timer(1000, new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				i++;	
-			}
-		});
-		t.start();
+		// temporizador
+		temporizador();
+		// recibir teclas
+		recibirTeclas();
+		// color de fondo
+		setBackground(Color.BLACK);
+	}
 
-		// color de fondo del jpanel
-		this.setBackground(Color.BLACK);
+	private void recibirTeclas() {
 
 		addKeyListener(new KeyListener() {
 			@Override
@@ -56,7 +53,19 @@ public class Juego extends JPanel {
 		});
 		setFocusable(true);
 	}
-	
+
+	// temporizador
+	private void temporizador() {
+		t = new Timer(1000, new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				i++;
+			}
+		});
+		t.start();
+	}
+
+	// devolver tiempo temporizador
 	private int getTiempo() {
 		return i;
 	}
@@ -84,16 +93,14 @@ public class Juego extends JPanel {
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		// barra
-		g2d.setColor(Color.GREEN);
 		barra.paint(g2d);
 		// bola
-		g2d.setColor(Color.RED);
 		bola.paint(g2d);
 		// puntuacion
 		g2d.setColor(Color.CYAN);
 		g2d.setFont(new Font("Candara", Font.ITALIC, 40));
 		g2d.drawString(String.valueOf(getPuntaje()), 10, 40);
-		//temporizador
+		// temporizador
 		g2d.setColor(Color.YELLOW);
 		g2d.setFont(new Font("Candara", Font.ITALIC, 40));
 		g2d.drawString(String.valueOf(getTiempo()), 340, 40);
