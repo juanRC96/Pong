@@ -8,15 +8,17 @@ public class Bola {
 
 	private static final int DIAMETRO = 30;
 
-	int x = 300;
+	//posicion inicial
+	int x = 200;
 	int y = 0;
 	// velocidad de desplazamiento
 	int xa = 5;
 	int ya = 5;
-	int puntaje = 0;
+	int colision = 0;
 
 	private Juego j;
 
+	//constructor
 	public Bola(Juego j) {
 		this.j = j;
 	}
@@ -48,15 +50,15 @@ public class Bola {
 			if (j.barra.getX() + j.barra.getAncho() < x) {
 				xa = -xa;
 			}
-			puntaje = puntaje + 1;
+			colision = colision + 1;
 		}
 		x = x + xa;
 		y = y + ya;
 	}
-
-	// devuelvo el puntaje
-	public int getPuntaje() {
-		return puntaje;
+	
+	//devolver cantidad de colisiones
+	public int getCantColision(){
+		return colision;
 	}
 
 	// dibujo de la bola
