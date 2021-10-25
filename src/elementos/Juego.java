@@ -17,6 +17,7 @@ public class Juego extends JPanel {
 
 	Barra barra = new Barra(this);
 	Bola bola = new Bola(this);
+	Bloque bloque = new Bloque(this);
 	Tiempo tiempo = new Tiempo();
 	Puntaje puntaje = new Puntaje(this);
 
@@ -51,9 +52,11 @@ public class Juego extends JPanel {
 	}
 
 	// animar objetos
-	private void mover() {
+	private void mover() throws InterruptedException {
 		barra.mover();
 		bola.mover();
+		barra.cambiarRebote();
+		bloque.cambiarPosicionRebote();
 	}
 
 	// alerta de juego terminado
@@ -71,6 +74,7 @@ public class Juego extends JPanel {
 		// dibujo los componentes
 		barra.paint(g2d);
 		bola.paint(g2d);
+		bloque.paint(g2d);
 		tiempo.paint(g2d);
 		puntaje.paint(g2d);
 	}
@@ -80,7 +84,7 @@ public class Juego extends JPanel {
 		JFrame frame = new JFrame("Ventana");
 		Juego j = new Juego();
 		frame.add(j);
-		frame.setSize(400, 600);
+		frame.setSize(400, 800);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

@@ -8,17 +8,17 @@ public class Bola {
 
 	private static final int DIAMETRO = 30;
 
-	//posicion inicial
-	int x = 200;
+	// posicion inicial
+	int x = 250;
 	int y = 0;
 	// velocidad de desplazamiento
-	int xa = 5;
-	int ya = 5;
+	int xa = 7;
+	int ya = 7;
 	int colision = 0;
 
 	private Juego j;
 
-	//constructor
+	// constructor
 	public Bola(Juego j) {
 		this.j = j;
 	}
@@ -35,29 +35,58 @@ public class Bola {
 		if (y + ya > j.getHeight() - DIAMETRO)
 			j.juegoTerminado();
 
-		// calculo del rebote al colisionar
-		if (collision()) {
-
-			if (j.barra.getY() - j.barra.getAlto() > y) {
-				ya = -ya;
-			}
-			if (j.barra.getY() + j.barra.getAlto() < y) {
-				ya = -ya;
-			}
-			if (j.barra.getX() - j.barra.getAncho() > x) {
-				xa = -xa;
-			}
-			if (j.barra.getX() + j.barra.getAncho() < x) {
-				xa = -xa;
-			}
-			colision = colision + 1;
-		}
 		x = x + xa;
 		y = y + ya;
 	}
-	
-	//devolver cantidad de colisiones
-	public int getCantColision(){
+
+	public void cambiarDireccionBa() {
+		
+		if (j.barra.getY() - j.barra.getAlto() > y) {
+			ya = -ya;
+			if (j.barra.getX() - j.barra.getAncho() > x) {
+				xa = -xa;
+			}
+			else if (j.barra.getX() + j.barra.getAncho() < x) {
+				xa = -xa;
+			}
+		}
+		else if (j.barra.getY() + j.barra.getAlto() < y) {
+			ya = -ya;
+			if (j.barra.getX() - j.barra.getAncho() > x) {
+				xa = -xa;
+			}
+			else if (j.barra.getX() + j.barra.getAncho() < x) {
+				xa = -ya;
+			}
+		}
+		colision = colision + 1;
+	}
+
+	public void cambiarDireccionBl() {
+		
+		if (j.bloque.getY() + j.bloque.getAlto() > y) {
+			ya = -ya;
+			if (j.bloque.getX() - j.bloque.getAncho() > x) {
+				xa = -xa;
+			}
+			else if (j.bloque.getX() + j.bloque.getAncho() < x) {
+				xa = -xa;
+			}
+		}
+		else if (j.bloque.getY() - j.bloque.getAlto() < y) {
+			ya = -ya;
+			if (j.bloque.getX() - j.bloque.getAncho() > x) {
+				xa = -xa;
+			}
+			else if (j.bloque.getX() + j.bloque.getAncho() < x) {
+				xa = -ya;
+			}
+		}
+		colision = colision + 1;
+	}
+
+	// devolver cantidad de colisiones
+	public int getCantColision() {
 		return colision;
 	}
 
@@ -68,8 +97,12 @@ public class Bola {
 	}
 
 	// cuando dos figuras se pisan, devuelve un true
-	private boolean collision() {
+	public boolean getColisionConBarra() {
 		return j.barra.getBounds().intersects(getBounds());
+	}
+
+	public boolean getColisionConBloque() {
+		return j.bloque.getBounds().intersects(getBounds());
 	}
 
 	// dibujo de la hitbox de la bola

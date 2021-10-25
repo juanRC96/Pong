@@ -11,7 +11,7 @@ public class Barra {
 	private static final int ALTO = 20;
 
 	int x = 0;
-	int y = 400;
+	int y = 600;
 	int xa = 0;
 	int ya = 0;
 	private Juego j;
@@ -49,6 +49,11 @@ public class Barra {
 	// dibujo de la hitbox de la barra
 	public Rectangle getBounds() {
 		return new Rectangle(x, y, ANCHO, ALTO);
+	}
+	
+	public void cambiarRebote() {
+		if(j.bola.getColisionConBarra()) {
+		j.bola.cambiarDireccionBa();}
 	}
 
 	// devolver coordenada y

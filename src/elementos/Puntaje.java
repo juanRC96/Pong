@@ -16,7 +16,7 @@ public class Puntaje {
 	
 	//pintar puntaje
 	public void paint(Graphics2D g) {
-		puntaje = (j.bola.getCantColision())*2;
+		puntaje = (j.bloque.getPuntaje());
 		g.setColor(Color.CYAN);
 		g.setFont(new Font("Candara", Font.ITALIC, 40));
 		g.drawString(String.valueOf(puntaje), 10, 40);
