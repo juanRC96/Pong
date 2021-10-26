@@ -1,12 +1,14 @@
 package elementos;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Rectangle;
+
+import javax.swing.ImageIcon;
 
 public class Bola {
 
-	private static final int DIAMETRO = 30;
+	private static final int DIAMETRO = 40;
 
 	// posicion inicial
 	int x = 250;
@@ -15,6 +17,7 @@ public class Bola {
 	int xa = 7;
 	int ya = 7;
 	int colision = 0;
+	private Image imagen;
 
 	private Juego j;
 
@@ -51,8 +54,8 @@ public class Bola {
 
 	// dibujo de la bola
 	public void paint(Graphics2D g) {
-		g.setColor(Color.RED);
-		g.fillOval(x, y, DIAMETRO, DIAMETRO);
+		imagen = new ImageIcon(this.getClass().getResource("bola.png")).getImage();
+		g.drawImage(imagen,x,y,DIAMETRO,DIAMETRO,null);	
 	}
 
 	// cuando la barra y la bola colisionan devuelve true
