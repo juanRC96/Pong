@@ -1,12 +1,13 @@
 package elementos;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -21,14 +22,14 @@ public class Juego extends JPanel {
 	Tiempo tiempo = new Tiempo();
 	Puntaje puntaje = new Puntaje(this);
 
+	Image imagen;
+
 	// CONSTRUCTOR
 	public Juego() {
 		// iniciar temporizador
 		tiempo.temporizador();
 		// recibir teclas
 		recibirTeclas();
-		// color de fondo
-		setBackground(Color.BLACK);
 	}
 
 	// recibir teclas
@@ -78,11 +79,22 @@ public class Juego extends JPanel {
 		System.exit(ABORT);
 	}
 
+	// cuando el tiempo llegue a 60 segundos, el juego se termina
+	public void verificarTiempo() {
+		if (tiempo.getTiempo() >= 60) {
+			juegoTerminado();
+		}
+	}
+
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+		// fondo de pantalla
+		imagen = new ImageIcon(this.getClass().getResource("fondo.png")).getImage();
+		g.drawImage(imagen, 0, 0, null);
 
 		// dibujo los componentes
 		barra.paint(g2d);
@@ -94,17 +106,19 @@ public class Juego extends JPanel {
 
 	// main
 	public static void main(String[] args) throws InterruptedException {
-		JFrame frame = new JFrame("Ventana");
+		JFrame frame = new JFrame("Juego");
 		Juego j = new Juego();
 		frame.add(j);
 		frame.setSize(400, 800);
 		frame.setVisible(true);
+		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		// game loop
 		while (true) {
 			j.repaint();
 			j.mover();
+			j.verificarTiempo();
 			Thread.sleep(10);
 		}
 

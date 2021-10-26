@@ -29,13 +29,13 @@ public class Tiempo {
 	}
 
 	// devolver tiempo
-	private int getTiempo() {
+	public int getTiempo() {
 		return i;
 	}
 
 	// pintar tiempo
 	public void paint(Graphics2D g) {
-		g.setColor(Color.YELLOW);
+		g.setColor(Color.GREEN);
 		g.setFont(new Font("Candara", Font.ITALIC, 40));
 		g.drawString(String.valueOf(getTiempo()), 340, 40);
 	}

@@ -1,19 +1,22 @@
 package elementos;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Rectangle;
+
+import javax.swing.ImageIcon;
 
 public class Barra {
 
 	private static final int ANCHO = 100;
-	private static final int ALTO = 20;
+	private static final int ALTO = 40;
 
 	int x = 0;
 	int y = 600;
 	int xa = 0;
 	int ya = 0;
 	private Juego j;
+	private Image imagen;
 
 	// constructor
 	public Barra(Juego j) {
@@ -46,8 +49,10 @@ public class Barra {
 
 	// dibujar barra
 	public void paint(Graphics2D g) {
-		g.setColor(Color.GREEN);
-		g.fillRect(x, y, ANCHO, ALTO);
+		/*g.setColor(Color.GREEN);
+		g.fillRect(x, y, ANCHO, ALTO);*/
+		imagen = new ImageIcon(this.getClass().getResource("barra.png")).getImage();
+		g.drawImage(imagen,x,y,ANCHO,ALTO,null);	
 	}
 
 	// dibujo de la hitbox de la barra

@@ -1,9 +1,11 @@
 package elementos;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Rectangle;
 import java.util.Random;
+
+import javax.swing.ImageIcon;
 
 public class Bloque {
 
@@ -12,6 +14,7 @@ public class Bloque {
 	private int ANCHO = 100;
 	private int ALTO = 20;
 	private Juego j;
+	private Image imagen;
 	int puntaje;
 
 	Random random = new Random();
@@ -37,9 +40,9 @@ public class Bloque {
 	}
 
 	// dibujar bloque
-	public void paint(Graphics2D g) {
-		g.setColor(Color.MAGENTA);
-		g.fillRect(x, y, ANCHO, ALTO);
+	public void paint(Graphics2D g) {	
+		imagen = new ImageIcon(this.getClass().getResource("bloque.png")).getImage();
+		g.drawImage(imagen,x,y,ANCHO,ALTO,null);	
 	}
 
 	// devolver bordes del bloque
