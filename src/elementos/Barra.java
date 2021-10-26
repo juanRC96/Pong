@@ -3,7 +3,6 @@ package elementos;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
-import java.awt.event.KeyEvent;
 
 public class Barra {
 
@@ -16,6 +15,7 @@ public class Barra {
 	int ya = 0;
 	private Juego j;
 
+	// constructor
 	public Barra(Juego j) {
 		this.j = j;
 	}
@@ -27,17 +27,21 @@ public class Barra {
 	}
 
 	// accion al soltar tecla
-	public void keyReleased(KeyEvent e) {
+	public void detenerBarra() {
 		xa = 0;
 		ya = 0;
 	}
 
-	// accion al presionar tecla
-	public void keyPressed(KeyEvent e) {
-		if (e.getKeyCode() == KeyEvent.VK_LEFT)
+	// desplazamiento de barra
+	public void direccionBarra(String d) {
+		switch (d) {
+		case "IZQ":
 			xa = -5;
-		if (e.getKeyCode() == KeyEvent.VK_RIGHT)
+			break;
+		case "DER":
 			xa = 5;
+			break;
+		}
 	}
 
 	// dibujar barra
@@ -50,10 +54,12 @@ public class Barra {
 	public Rectangle getBounds() {
 		return new Rectangle(x, y, ANCHO, ALTO);
 	}
-	
+
+	// cambiar direccion de la bola al detectar colision
 	public void cambiarRebote() {
-		if(j.bola.getColisionConBarra()) {
-		j.bola.cambiarDireccionBa();}
+		if (j.bola.getColisionConBarra()) {
+			j.bola.cambiarDireccion();
+		}
 	}
 
 	// devolver coordenada y
@@ -66,10 +72,12 @@ public class Barra {
 		return x;
 	}
 
+	// devolver ancho
 	public int getAncho() {
 		return ANCHO;
 	}
 
+	// devolver alto
 	public int getAlto() {
 		return ALTO;
 	}

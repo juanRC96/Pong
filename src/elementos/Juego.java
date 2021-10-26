@@ -31,6 +31,7 @@ public class Juego extends JPanel {
 		setBackground(Color.BLACK);
 	}
 
+	// recibir teclas
 	private void recibirTeclas() {
 
 		addKeyListener(new KeyListener() {
@@ -40,12 +41,24 @@ public class Juego extends JPanel {
 
 			@Override
 			public void keyReleased(KeyEvent e) {
-				barra.keyReleased(e);
+				barra.detenerBarra();
 			}
 
 			@Override
 			public void keyPressed(KeyEvent e) {
-				barra.keyPressed(e);
+				int tecla = e.getKeyCode();
+
+				switch (tecla) {
+				case KeyEvent.VK_LEFT:
+					barra.direccionBarra("IZQ");
+					break;
+				case KeyEvent.VK_RIGHT:
+					barra.direccionBarra("DER");
+					break;
+				case KeyEvent.VK_E:
+					System.exit(0);
+
+				}
 			}
 		});
 		setFocusable(true);
@@ -61,7 +74,7 @@ public class Juego extends JPanel {
 
 	// alerta de juego terminado
 	public void juegoTerminado() {
-		JOptionPane.showMessageDialog(this, "Su puntaje es: " + puntaje.getPuntaje());
+		JOptionPane.showMessageDialog(this, "Su puntaje es " + puntaje.getPuntaje());
 		System.exit(ABORT);
 	}
 
@@ -88,7 +101,7 @@ public class Juego extends JPanel {
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		//game loop
+		// game loop
 		while (true) {
 			j.repaint();
 			j.mover();

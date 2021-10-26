@@ -23,9 +23,9 @@ public class Bola {
 		this.j = j;
 	}
 
+	// movimiento de la bola
 	public void mover() {
 
-		// movimiento de la bola
 		if (x + xa < 0)
 			xa = -xa;
 		if (x + xa > j.getWidth() - DIAMETRO)
@@ -39,55 +39,14 @@ public class Bola {
 		y = y + ya;
 	}
 
-	public void cambiarDireccionBa() {
-		
-		if (j.barra.getY() - j.barra.getAlto() > y) {
-			ya = -ya;
-			if (j.barra.getX() - j.barra.getAncho() > x) {
-				xa = -xa;
-			}
-			else if (j.barra.getX() + j.barra.getAncho() < x) {
-				xa = -xa;
-			}
-		}
-		else if (j.barra.getY() + j.barra.getAlto() < y) {
-			ya = -ya;
-			if (j.barra.getX() - j.barra.getAncho() > x) {
-				xa = -xa;
-			}
-			else if (j.barra.getX() + j.barra.getAncho() < x) {
-				xa = -ya;
-			}
-		}
-		colision = colision + 1;
-	}
+	// cambiar direccion de la bola
+	public void cambiarDireccion() {
 
-	public void cambiarDireccionBl() {
-		
 		if (j.bloque.getY() + j.bloque.getAlto() > y) {
 			ya = -ya;
-			if (j.bloque.getX() - j.bloque.getAncho() > x) {
-				xa = -xa;
-			}
-			else if (j.bloque.getX() + j.bloque.getAncho() < x) {
-				xa = -xa;
-			}
-		}
-		else if (j.bloque.getY() - j.bloque.getAlto() < y) {
+		} else if (j.bloque.getY() - j.bloque.getAlto() < y) {
 			ya = -ya;
-			if (j.bloque.getX() - j.bloque.getAncho() > x) {
-				xa = -xa;
-			}
-			else if (j.bloque.getX() + j.bloque.getAncho() < x) {
-				xa = -ya;
-			}
 		}
-		colision = colision + 1;
-	}
-
-	// devolver cantidad de colisiones
-	public int getCantColision() {
-		return colision;
 	}
 
 	// dibujo de la bola
@@ -96,11 +55,12 @@ public class Bola {
 		g.fillOval(x, y, DIAMETRO, DIAMETRO);
 	}
 
-	// cuando dos figuras se pisan, devuelve un true
+	// cuando la barra y la bola colisionan devuelve true
 	public boolean getColisionConBarra() {
 		return j.barra.getBounds().intersects(getBounds());
 	}
-
+	
+	// cuando el bloque y la bola colisionan devuelve true
 	public boolean getColisionConBloque() {
 		return j.bloque.getBounds().intersects(getBounds());
 	}
