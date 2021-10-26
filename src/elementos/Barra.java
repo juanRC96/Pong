@@ -63,7 +63,7 @@ public class Barra {
 	// cambiar direccion de la bola al detectar colision
 	public void cambiarRebote() {
 		if (j.bola.getColisionConBarra()) {
-			j.bola.cambiarDireccion();
+			j.bola.cambiarDireccionBa();
 		}
 	}
 

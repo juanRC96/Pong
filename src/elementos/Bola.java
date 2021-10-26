@@ -43,11 +43,21 @@ public class Bola {
 	}
 
 	// cambiar direccion de la bola
-	public void cambiarDireccion() {
+	public void cambiarDireccionBl() {
 
 		if (j.bloque.getY() + j.bloque.getAlto() > y) {
 			ya = -ya;
-		} else if (j.bloque.getY() - j.bloque.getAlto() < y) {
+		} else if (j.bloque.getY() < y) {
+			ya = -ya;
+		}
+	}
+	
+	// cambiar direccion de la bola
+	public void cambiarDireccionBa() {
+
+		if (j.barra.getY() + j.barra.getAlto() > y) {
+			ya = -ya;
+		} else if (j.barra.getY() < y) {
 			ya = -ya;
 		}
 	}

@@ -33,7 +33,7 @@ public class Bloque {
 	public void cambiarPosicionRebote() {
 		if (j.bola.getColisionConBloque() == true) {
 			puntaje = puntaje + 1;
-			j.bola.cambiarDireccion();
+			j.bola.cambiarDireccionBl();
 			x = random.nextInt(j.getWidth() - ANCHO);
 			y = random.nextInt(j.getHeight() - 400);
 		}
