@@ -15,7 +15,7 @@ public class Bloque {
 	private int ALTO = 20;
 	private Juego j;
 	private Image imagen;
-	int puntaje;
+	private int contColisiones = 0;
 
 	Random random = new Random();
 
@@ -24,25 +24,25 @@ public class Bloque {
 		this.j = j;
 	}
 
+	// dibujar bloque
+	public void paint(Graphics2D g) {
+		imagen = new ImageIcon(this.getClass().getResource("bloque.png")).getImage();
+		g.drawImage(imagen, x, y, ANCHO, ALTO, null);
+	}
+
 	// devolver puntaje
-	public int getPuntaje() {
-		return puntaje;
+	public int getCantColisiones() {
+		return contColisiones;
 	}
 
 	// cambiar posicion del bloque y direccion de la bola
 	public void cambiarPosicionRebote() {
 		if (j.bola.getColisionConBloque() == true) {
-			puntaje = puntaje + 1;
+			contColisiones = contColisiones + 1;
 			j.bola.cambiarDireccionBl();
 			x = random.nextInt(j.getWidth() - ANCHO);
 			y = random.nextInt(j.getHeight() - 400);
 		}
-	}
-
-	// dibujar bloque
-	public void paint(Graphics2D g) {	
-		imagen = new ImageIcon(this.getClass().getResource("bloque.png")).getImage();
-		g.drawImage(imagen,x,y,ANCHO,ALTO,null);	
 	}
 
 	// devolver bordes del bloque

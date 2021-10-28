@@ -21,6 +21,7 @@ public class Juego extends JPanel {
 	Bloque bloque = new Bloque(this);
 	Tiempo tiempo = new Tiempo();
 	Puntaje puntaje = new Puntaje(this);
+	Nivel nivel = new Nivel(this);
 
 	Image imagen;
 
@@ -102,6 +103,7 @@ public class Juego extends JPanel {
 		bloque.paint(g2d);
 		tiempo.paint(g2d);
 		puntaje.paint(g2d);
+		nivel.paint(g2d);
 	}
 
 	// main

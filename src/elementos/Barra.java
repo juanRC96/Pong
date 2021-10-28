@@ -11,10 +11,9 @@ public class Barra {
 	private static final int ANCHO = 100;
 	private static final int ALTO = 40;
 
-	int x = 0;
-	int y = 600;
-	int xa = 0;
-	int ya = 0;
+	private int x = 0;
+	private int y = 600;
+	private int xa = 0;
 	private Juego j;
 	private Image imagen;
 
@@ -23,6 +22,14 @@ public class Barra {
 		this.j = j;
 	}
 
+	// dibujar barra
+	public void paint(Graphics2D g) {
+		/*g.setColor(Color.GREEN);
+		g.fillRect(x, y, ANCHO, ALTO);*/
+		imagen = new ImageIcon(this.getClass().getResource("barra.png")).getImage();
+		g.drawImage(imagen,x,y,ANCHO,ALTO,null);	
+	}
+	
 	// movimiento de la barra, limitado al ancho y alto
 	public void mover() {
 		if (x + xa > 0 && x + xa < j.getWidth() - ANCHO)
@@ -32,7 +39,6 @@ public class Barra {
 	// accion al soltar tecla
 	public void detenerBarra() {
 		xa = 0;
-		ya = 0;
 	}
 
 	// desplazamiento de barra
@@ -45,14 +51,6 @@ public class Barra {
 			xa = 5;
 			break;
 		}
-	}
-
-	// dibujar barra
-	public void paint(Graphics2D g) {
-		/*g.setColor(Color.GREEN);
-		g.fillRect(x, y, ANCHO, ALTO);*/
-		imagen = new ImageIcon(this.getClass().getResource("barra.png")).getImage();
-		g.drawImage(imagen,x,y,ANCHO,ALTO,null);	
 	}
 
 	// dibujo de la hitbox de la barra
