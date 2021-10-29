@@ -45,10 +45,10 @@ public class Barra {
 	public void direccionBarra(String d) {
 		switch (d) {
 		case "IZQ":
-			xa = -5;
+			xa = -7;
 			break;
 		case "DER":
-			xa = 5;
+			xa = 7;
 			break;
 		}
 	}
