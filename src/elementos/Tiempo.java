@@ -36,7 +36,7 @@ public class Tiempo {
 	// pintar tiempo
 	public void paint(Graphics2D g) {
 		g.setColor(Color.GREEN);
-		g.setFont(new Font("Candara", Font.ITALIC, 40));
-		g.drawString(String.valueOf(getTiempo()), 340, 40);
+		g.setFont(new Font("Candara", Font.ITALIC, 30));
+		g.drawString(String.valueOf(getTiempo()), 350, 30);
 	}
 }

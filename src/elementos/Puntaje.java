@@ -17,8 +17,8 @@ public class Puntaje {
 	// pintar puntaje
 	public void paint(Graphics2D g) {
 		g.setColor(Color.CYAN);
-		g.setFont(new Font("Candara", Font.ITALIC, 40));
-		g.drawString(String.valueOf(getPuntaje()), 10, 40);
+		g.setFont(new Font("Candara", Font.ITALIC, 30));
+		g.drawString(String.valueOf(getPuntaje()), 10, 30);
 	}
 	
 	//devolver puntaje

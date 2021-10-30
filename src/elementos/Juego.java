@@ -1,5 +1,6 @@
 package elementos;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -96,6 +97,9 @@ public class Juego extends JPanel {
 		// fondo de pantalla
 		imagen = new ImageIcon(this.getClass().getResource("fondo.png")).getImage();
 		g.drawImage(imagen, 0, 0, null);
+		
+		g.setColor(Color.BLACK);
+		g.fillRect(0, 0, 400, 40);
 
 		// dibujo los componentes
 		barra.paint(g2d);

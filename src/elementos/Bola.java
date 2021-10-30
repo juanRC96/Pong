@@ -12,7 +12,7 @@ public class Bola {
 
 	// posicion inicial
 	private int x = 250;
-	private int y = 0;
+	private int y = 80;
 	// velocidad de desplazamiento
 	private double xa = 5;
 	private double ya = 5;
@@ -42,7 +42,7 @@ public class Bola {
 		if (x + xa > j.getWidth() - DIAMETRO) {
 			xa = -xa;
 		}
-		if (y + ya < 0) {
+		if (y + ya < 40) {
 			ya = -ya;
 		}
 		if (y + ya > j.getHeight() - DIAMETRO) {

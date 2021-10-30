@@ -41,7 +41,7 @@ public class Bloque {
 			contColisiones = contColisiones + 1;
 			j.bola.cambiarDireccionBl();
 			x = random.nextInt(j.getWidth() - ANCHO);
-			y = random.nextInt(j.getHeight() - 400);
+			y = random.nextInt(j.getHeight() - 400)+40;
 		}
 	}
 

@@ -17,7 +17,7 @@ public class Nivel {
 	public void paint(Graphics2D g) {
 		g.setColor(Color.RED);
 		g.setFont(new Font("Candara", Font.ITALIC, 30));
-		g.drawString("Nivel", 140, 40);
-		g.drawString(String.valueOf((int)j.bola.getVelocidad()-4), 210, 40);
+		g.drawString("Nivel", 140, 30);
+		g.drawString(String.valueOf((int)j.bola.getVelocidad()-4), 210, 30);
 	}
 }
