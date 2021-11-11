@@ -81,6 +81,12 @@ public class Juego extends JPanel {
 		System.exit(ABORT);
 	}
 
+	// consulta inicio del juego
+	public static int iniciarJuego() {
+		int confirmar = JOptionPane.showConfirmDialog(null, "Iniciar juego");
+		return confirmar;
+	}
+
 	// cuando el tiempo llegue a 60 segundos, el juego se termina
 	public void verificarTiempo() {
 		if (tiempo.getTiempo() >= 60) {
@@ -97,7 +103,7 @@ public class Juego extends JPanel {
 		// fondo de pantalla
 		imagen = new ImageIcon(this.getClass().getResource("fondo.png")).getImage();
 		g.drawImage(imagen, 0, 0, null);
-		
+
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, 400, 40);
 
@@ -120,12 +126,22 @@ public class Juego extends JPanel {
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		// game loop
-		while (true) {
-			j.repaint();
-			j.mover();
-			j.verificarTiempo();
-			Thread.sleep(10);
+		// confirmacion para iniciar el juego
+		switch (iniciarJuego()) {
+		case 0:
+			// game loop
+			while (true) {
+				j.repaint();
+				j.mover();
+				j.verificarTiempo();
+				Thread.sleep(10);
+			}
+		case 1:
+			System.exit(ABORT);
+			break;
+		case 2:
+			System.exit(ABORT);
+			break;
 		}
 
 	}
